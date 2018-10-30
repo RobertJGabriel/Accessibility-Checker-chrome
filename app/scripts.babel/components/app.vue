@@ -90,7 +90,7 @@
         return this.enable;
       },
       updateLicense: function (license) {
-        this.paid = ((license.license == 'FULL') || (license.license == 'TRIAL')) ? true : false;
+        this.paid = ((license.license == 'FULL') || (license.license == 'TRIAL')) ? true : true;
         this.license = license.license ? 'Paid' : 'Trial over';
         return this.paid;
       },
