@@ -67,8 +67,11 @@
       // whenever question changes, this function will run
       enable: function (newSetting, oldSetting) {
         // Dont change the settings if its the same or no past 
-        if (newSetting === oldSetting || oldSetting === null) return false;
-
+        if (newSetting === oldSetting || oldSetting === null ) return false;
+        if(this.paid === false){
+          this.save(false);
+          return false;
+        }
         this.save(newSetting);
         this.reload();
       }
@@ -100,10 +103,10 @@
           // and use that tab to fill in out title and url
           const currentTab = tabs[0];
           const codeScript = 'window.location.reload();';
-        chrome.tabs.executeScript(currentTab.id, {
-                code: codeScript
-            })
-  
+          chrome.tabs.executeScript(currentTab.id, {
+            code: codeScript
+          })
+
         });
 
       }
